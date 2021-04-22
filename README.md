@@ -2,7 +2,7 @@
 
 This repository contains MATLAB code used to explore the stability of nodal set crossings in Laplacian eigenfunctions on deformed rectangles.
 
-A copy of the thesis is also included in this repository.
+A [copy of the thesis](Thesis%20Full%204-22.pdf) is also included in this repository.
 
 ## Description of Files:
 
