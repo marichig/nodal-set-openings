@@ -9,7 +9,7 @@ function [result, model, FEMatrices] = analyze_domain(domain, varargin)
     defaultMinEig = -Inf;
     defaultHmax = -1;
     defaultHmin = -1;
-    defaultBC = 'neumann';
+    defaultBC = 'dirichlet';
     
     p = inputParser;
     addRequired(p, 'domain');
@@ -26,6 +26,7 @@ function [result, model, FEMatrices] = analyze_domain(domain, varargin)
     tnodes = tr.Points';
     telements = tr.ConnectivityList';
     geometryFromMesh(model,tnodes,telements);
+    disp("Max Element Size from Mesh:")
     model.Mesh.MaxElementSize
     
     %% Use HMax factor to tune mesh resolution. Smaller val --> finer grid

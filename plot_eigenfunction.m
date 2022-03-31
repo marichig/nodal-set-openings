@@ -17,7 +17,7 @@ function plot_eigenfunction(eigenresults, model, varargin)
     if p.Results.correctSign
         %doesn't quite work for the resonant mode
         cell_width = max(model.Mesh.Nodes(1,:)); %x dimension
-        cell_height = max(model.Mesh.Nodes(2,:)); %x dimension
+        cell_height = max(model.Mesh.Nodes(2,:)); %y dimension
 
         %https://www.mathworks.com/help/pde/ug/pde.femesh.findnodes.html#d123e54123
         upper_left = findNodes(model.Mesh,'box',[0.125*cell_width 0.25*cell_width], [0.125*cell_height 0.25*cell_height]);
@@ -32,7 +32,7 @@ function plot_eigenfunction(eigenresults, model, varargin)
     end
 
     pdeplot(model, 'XYData', eigenfunction, ...
-        'Contour','on', 'Levels', 1,...
+        'Contour','on', 'Levels', [0,0],...
         'ColorBar', p.Results.ColorBar);
     if ~p.Results.showAxes
         set(gca,'Visible','off')
