@@ -2,8 +2,6 @@
 
 This repository contains MATLAB code used to explore the stability of nodal set crossings in Laplacian eigenfunctions on deformed rectangles.
 
-A [copy of the thesis](Thesis%20Full%204-22.pdf) is also included in this repository.
-
 ## Description of Files:
 
 1. [```build_perturbed_square```](build_perturbed_square.m): Function that returns a [```polyshape```](https://www.mathworks.com/help/matlab/ref/polyshape.html) describing the deformed rectangle. Specify via arguments the ```cellWidth``` and ```cellHeight``` of the near-rectangular domain. Perturbations may also be placed on both the left and right side of the domain by setting ```bothSides``` to be ```true```. Three types of domain perturbations are available, specified by parameter ```boundaryFunction```:
@@ -21,5 +19,8 @@ A [copy of the thesis](Thesis%20Full%204-22.pdf) is also included in this reposi
   
 3. [```plot_eigenfunction```](plot_eigenfunction.m): A wrapper function that takes in the ```EigenResults``` and ```PDEModel``` objects and plots the eigenfunction. Parameters specify whether to show the Colorbar and plot axes, and whether to standardize the sign of the eigenfunction (such that the top-left-corner of the eigenfunction is positive).
 4. [```plot_results_interactive```](plot_results_interactive.m): When multiple eigenfunctions are contained in the returned ```EigenResults```, this function lets you cycle through the plots to inspect them. Use the left-arrow key to move backwards, "b" or "e" to exit, and any other key to cycle forward.
+5. [```N_selection_resonance_control```](N_selection_resonance_control.m): This script takes a seed aspect ratio and performs gradient ascent/descent to control for "resonance" (i.e. eigenvalue degeneracy). Outputs an aspect ratio that minimizes this effect.
+6. [```get_zero_set```](get_zero_set.m): Finds the zero set (up to small error) of the eigenfunction contained within a specified box.
+7. [```get_min_distance```](get_min_distance.m): Finds the zero sets of the two opposing branches on the nodal sets and calculates their minimum distance, for each aspect ratio in Figure 5.
 
-The remaining files (```figure_1```,..., ```figure_5```) contain code to reproduce each of the figures shown in the thesis.
+The remaining files (```figure_1_3```,..., ```figure_5```) contain code to reproduce each of the figures shown in the thesis.
