@@ -1,6 +1,6 @@
 # Nodal Set Openings on Perturbed Rectangular Domains
 
-This repository contains MATLAB code used to explore the stability of nodal set crossings in Laplacian eigenfunctions on deformed rectangles.
+This repository contains MATLAB code used to explore the stability of nodal set crossings in Laplacian eigenfunctions on deformed rectangles. It accompanies the paper  ["Nodal Set Openings on Perturbed Rectangular Domains"](https://arxiv.org/abs/2204.12009), written by Thomas Beck, Marichi Gupta, and Jeremy L. Marzuola. 
 
 ## Description of Files:
 
