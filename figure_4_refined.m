@@ -13,18 +13,9 @@ boundary_perturb_func = 'sin';
 perturb_freq = 6/cell_height;
 
 side_lengths = [resonant_value - 0.2, ...
-    resonant_value - 0.16, ...
-    resonant_value - 0.11, ... % this the one
-    resonant_value - 0.10,... % vertical mode
-    resonant_value - 0.09,... % vertical mode
-    resonant_value - 0.085,... % close to sqrt(15)
-    resonant_value - 0.05, ...
-    resonant_value];
-
-side_lengths = [3.7981, resonant_value - 0.11, 3.849, 3.8495, 3.85, ...
-    3.86, 3.8753, 3.87535, 3.8754 ];
-
-
+    resonant_value - 0.11, ...
+    resonant_value, ...
+    resonant_value + 0.1];
 eig_ests = 4*pi^2*(side_lengths.^(-2) + cell_height^(-2));
 lower_eigs = eig_ests*0.99;
 upper_eigs = eig_ests*1.01;
@@ -45,8 +36,6 @@ for i = 1:length(side_lengths)
 end
 
 for i = 1:length(r_list)
-    
-    subplot(5,2,i)
     plot_eigenfunction(r_list(i), e_list(i), 'correctSign', true, 'showAxes', true)
 
     title(num2str(side_lengths(i)) + " by "+num2str(cell_height) + " Rectangle"+ ...
@@ -56,6 +45,6 @@ for i = 1:length(r_list)
     xlim([-eta - 0.1, side_lengths(i) + 0.1])
     ylim([-0.2, cell_height + 0.2])
     
-  %  print(gcf, 'plots/figure-4-resonance-height-1-panel-' + string(i) +'.eps', '-depsc','-opengl');
+    print(gcf, 'plots/figure-4-resonance-height-1-panel-' + string(i) +'.eps', '-depsc','-opengl');
 end
 

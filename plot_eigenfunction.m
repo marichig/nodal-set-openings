@@ -13,7 +13,11 @@ function plot_eigenfunction(eigenresults, model, varargin)
     parse(p, varargin{:})
    
     eigenfunction = eigenresults.Eigenvectors(:,p.Results.modeIndex);
-    
+    % normalization not worth it, introduces some numerical error that
+    % shifts the plotted nodal set
+    %eigenfunction = normalize(eigenfunction, "range",[-1 1]);
+    %eigenfunction = normalize(eigenfunction, "center", "mean");
+
     if p.Results.correctSign
         %doesn't quite work for the resonant mode
         cell_width = max(model.Mesh.Nodes(1,:)); %x dimension
@@ -30,12 +34,21 @@ function plot_eigenfunction(eigenresults, model, varargin)
             eigenfunction = -eigenfunction;
         end
     end
-
+    set(groot,'defaultLineLineWidth',1.75)
     pdeplot(model, 'XYData', eigenfunction, ...
         'Contour','on', 'Levels', [0,0],...
         'ColorBar', p.Results.ColorBar);
+        %'ColorMap','autumn',...
+
+    if strcmp(defaultColorBar, 'on')
+        colorbar('Ticks',[-1.3,1.3],...
+         'TickLabels',{'-','+'});
+    end
     if ~p.Results.showAxes
         set(gca,'Visible','off')
     end
+    fontsize(16, "points")
+    % ensure 1-1 x-y aspect ratio
+    daspect([1 1 1])
 end
 

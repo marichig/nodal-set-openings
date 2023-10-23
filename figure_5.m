@@ -82,5 +82,5 @@ end
 
 
 % print(gcf, 'plots/figure-5-1.png','-dpng','-r300');
-% print(gcf, 'plots/figure-5-1a.eps', '-depsc','-opengl');
+% print(gcf, 'plots/figure-5-1a.eps', '-depscs','-image');
 % manually adjust and save each plot
