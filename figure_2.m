@@ -22,6 +22,7 @@ eig_est = 4*pi^2*(cell_width^(-2) + cell_height^(-2));
 lower_eig = eig_est*0.99;
 upper_eig = eig_est*1.01;
 
+
 for i = 1:length(squares)
     [r,e,m] = analyze_domain(squares(i), 'Hmax_factor', 0.004, 'max_eig', upper_eig, 'min_eig', lower_eig, 'bc', 'dirichlet');
     figure('Renderer', 'painters', 'Position', [10 10 1200 600])
@@ -29,7 +30,9 @@ for i = 1:length(squares)
  
     
     title(titles(i));
-    xlim([-eta - 0.1, cell_width + 0.1])
-    ylim([-0.2, cell_height + 0.2])
-    print(gcf, 'plots/figure-3' + file_names(i) + '.eps', '-depsc2','-image', '-r100');   
+    fontsize(32, "points")
+    xlim([-eta - 0.1, cell_width + 0.05])
+    ylim([-0.1, cell_height + 0.1])
+    %daspect([1 sqrt(3) 2])
+    print(gcf, 'plots/figure-3' + file_names(i) + '.eps', '-depsc2','-image', '-r135');   
 end

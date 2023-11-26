@@ -29,16 +29,22 @@ upper_eig = eig_est*1.01;
 [r_asym_2, e_asym_2, ~] = analyze_domain(asymmetric_domain_2, 'Hmax_factor', 0.005, 'bc', 'dirichlet', 'min_eig', lower_eig, 'max_eig', upper_eig);
 
 % FIGURE 1
-tcl = tiledlayout(1,2, 'Position',[10 10 600 300]);
+tiledlayout(1,2);
 nexttile
 plot_eigenfunction(r_sym, e_sym, 'correctSign', true, 'showAxes', false)
 nexttile
 plot_eigenfunction(r_asym, e_asym, 'correctSign', true, 'showAxes', false)
-
+fontsize(24, "points")
 cb = colorbar('Ticks',[-1.3,1.3],...
-         'TickLabels',{'-','+'}, 'Location', 'west');
+         'TickLabels',{'-','+'});
+cb.Layout.Tile = 'south';
+
+pause % manually adjust
+print(gcf,'plots/figure-1-full.eps', '-depsc2','-image');
 
 fontsize(24, "points")
+
+% FIGURE 3
 
 figure
 plot_eigenfunction(r_sym, e_sym, 'correctSign', true, 'showAxes', false)
@@ -46,9 +52,6 @@ print(gcf,'plots/figure-1-symmetric.eps', '-depsc2','-image');
 figure
 plot_eigenfunction(r_asym, e_asym, 'correctSign', true, 'showAxes', false)
 print(gcf,'plots/figure-1-asymmetric.eps', '-depsc2','-image');
-%colorbar('Ticks',[-1.3,1.3], 'TickLabels',{'-','+'});
-%fontsize(24, "points")
-%print(gcf,'plots/figure-1-asymmetric-with-label.eps', '-depsc2','-image');
 figure
 plot_eigenfunction(r_asym_2, e_asym_2, 'correctSign', true, 'showAxes', false)
 print(gcf,'plots/figure-1-asymmetric_2.eps', '-depsc2','-image');

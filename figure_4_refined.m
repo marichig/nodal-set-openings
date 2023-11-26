@@ -38,13 +38,12 @@ end
 for i = 1:length(r_list)
     plot_eigenfunction(r_list(i), e_list(i), 'correctSign', true, 'showAxes', true)
 
-    title(num2str(side_lengths(i)) + " by "+num2str(cell_height) + " Rectangle"+ ...
-     ", Eigenvalue = " + num2str(r_list(i).Eigenvalues(1)) + ...
-     ", Max Mesh Size = " + num2str(r_list(i).Mesh.MaxElementSize) + ...
+    title(num2str("N = " +side_lengths(i)) + ...
+     ", Eigenvalue = " + num2str(r_list(i).Eigenvalues(1)) + ... 
      ", eta = "+ num2str(eta));
     xlim([-eta - 0.1, side_lengths(i) + 0.1])
     ylim([-0.2, cell_height + 0.2])
     
-    print(gcf, 'plots/figure-4-resonance-height-1-panel-' + string(i) +'.eps', '-depsc','-opengl');
+    print(gcf, 'plots/figure-4-resonance-height-1-panel-' + string(i) +'.eps', '-depsc2','-image');
 end
 

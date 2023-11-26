@@ -1,4 +1,4 @@
-function square = build_perturbed_square(varargin)
+function [square, left_curvy_side] = build_perturbed_square(varargin)
 % See:
 % https://www.mathworks.com/help/matlab/ref/polyshape.html
 % https://www.mathworks.com/help/symbolic/triangularpulse.html

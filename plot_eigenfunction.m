@@ -7,6 +7,7 @@ function plot_eigenfunction(eigenresults, model, varargin)
 
     p = inputParser;
     addParameter(p, 'correctSign', defaultCorrectSign);
+    addParameter(p, 'manualSign', 1);
     addParameter(p, 'ColorBar', defaultColorBar);
     addParameter(p, 'showAxes', defaultShowAxes);
     addParameter(p, 'modeIndex', defaultModeIndex);
@@ -34,6 +35,11 @@ function plot_eigenfunction(eigenresults, model, varargin)
             eigenfunction = -eigenfunction;
         end
     end
+
+    if p.Results.manualSign < 0
+        eigenfunction = -eigenfunction;
+    end
+
     set(groot,'defaultLineLineWidth',1.75)
     pdeplot(model, 'XYData', eigenfunction, ...
         'Contour','on', 'Levels', [0,0],...
